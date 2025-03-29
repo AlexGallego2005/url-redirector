@@ -6,7 +6,7 @@ const { port } = require('../config/server.json');
 
 ( async () => {
     await init().then(() => {
-        console.debug('database initialized');
+        console.log('database initialized');
     });
 });
 
