@@ -11,11 +11,11 @@ router.get('/api/shortcode/create', async (req, res) => {
     /** @type { string | undefined } */
     var shortcode = (await sql('urls').select('shortcode').where('url', '=', url))?.at(0)?.shortcode;
 
-    if (shortcode) return res.json({ url: `${ req.protocol }://${ req.hostname }${ req?.socket?.localPort == 443 ? '' : `:${ req?.socket?.localPort }` }/s/${ shortcode }`, shortcode: shortcode });
+    if (shortcode) return res.json({ url: `https://${ req.hostname }/s/${ shortcode }`, shortcode: shortcode });
     
     shortcode = await uuid.generate();
     await sql('urls').insert({ 'url': url, 'shortcode': shortcode }).then( () => {
-        return res.json({ url: `${ req.protocol }://${ req.hostname }${ req?.socket?.localPort == 443 ? '' : `:${ req?.socket?.localPort }` }/s/${ shortcode }`, shortcode: shortcode });
+        return res.json({ url: `https://${ req.hostname }/s/${ shortcode }`, shortcode: shortcode });
     });
 });
 

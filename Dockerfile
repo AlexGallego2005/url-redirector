@@ -8,7 +8,7 @@ RUN npm install --save
 
 COPY . .
 
-VOLUME [ "/app/database" ]
+VOLUME [ "/app/database", "/app/config" ]
 
 EXPOSE 5000
 
