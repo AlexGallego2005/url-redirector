@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(require('./utils/routes/home'));
 app.use(require('./utils/routes/help'));
 app.use(require('./utils/routes/api'));
+app.use(require('./utils/routes/redirect'));
 app.use((req, res) => res.redirect('/'));
 
 app.listen(5000, () => console.log('Servidor iniciado en :5000'));
