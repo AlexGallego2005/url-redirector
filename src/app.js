@@ -3,7 +3,9 @@ const express = require('express');
 const morgan = require('morgan');
 const { init } = require('./libraries/init');
 const { port } = require('../config/server.json');
-init();
+init().then( () => {
+    console.debug('database initialized');
+});
 
 const app = express();
 app.set('view engine', 'ejs');
