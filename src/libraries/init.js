@@ -2,7 +2,7 @@ const path = require('path');
 const knex = require('knex')({
     client: 'better-sqlite3',
     connection: {
-        filename: path.join(__dirname, '..', '..', 'database', 'urls.db'),
+        filename: path.resolve(__dirname, '..', '..', 'database', 'urls.db'),
     },
     useNullAsDefault: true
 });
