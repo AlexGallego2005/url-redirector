@@ -5,7 +5,7 @@ const router = express();
 
 router.get('/api/shortcode/create', async (req, res) => {
     /** @type { string | undefined } */
-    const url = req?.query?.url;
+    const url = decodeURIComponent(req?.query?.url);
     if (!url) return res.json({ error: 'You need to specify a URL' });
 
     /** @type { string | undefined } */

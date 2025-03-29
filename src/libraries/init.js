@@ -8,7 +8,8 @@ const knex = require('knex')({
 });
 
 async function InitializeDatabase() {
-    await knex.schema.createTableIfNotExists('urls', function (t)
+    const urlsTable = knex.schema.hasTable('urls');
+    if (!urlsTable) await knex.schema.createTable('urls', function (t)
     {
         t.string('shortcode', 12);
         t.text('url');

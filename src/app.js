@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const { init } = require('./libraries/init');
+const { port } = require('../config/server.json');
 init();
 
 const app = express();
@@ -18,4 +19,4 @@ app.use(require('./utils/routes/api'));
 app.use(require('./utils/routes/redirect'));
 app.use((req, res) => res.redirect('/'));
 
-app.listen(5000, () => console.log('Servidor iniciado en :5000'));
+app.listen(port, () => console.log(`Servidor iniciado en :${ port }`));
