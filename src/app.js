@@ -4,12 +4,6 @@ const morgan = require('morgan');
 const { init } = require('./libraries/init');
 const { port } = require('../config/server.json');
 
-( async () => {
-    await init().then(() => {
-        console.log('database initialized');
-    });
-});
-
 const app = express();
 app.set('view engine', 'ejs');
 app.use(morgan('dev'));
@@ -24,4 +18,11 @@ app.use(require('./utils/routes/api'));
 app.use(require('./utils/routes/redirect'));
 app.use((req, res) => res.redirect('/'));
 
-app.listen(port, () => console.log(`Servidor iniciado en :${ port }`));
+app.listen(port, async () => {
+    console.log(`Servidor iniciado en :${ port }`);
+    console.log('Inicializando la base de datos');
+    await init().then(() => {
+        console.log('database initialized');
+    });
+    console.log('La base de datos se ha inicializado')
+});
