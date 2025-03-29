@@ -1,9 +1,9 @@
 FROM node:20
 
-USER node
-
 RUN groupmod -g 1010 node && \
     usermod -u 1010 -g 1010 node
+
+USER node
 
 WORKDIR /app
 
