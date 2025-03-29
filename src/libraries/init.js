@@ -16,6 +16,8 @@ async function InitializeDatabase() {
 
         t.primary('shortcode');
     });
+    
+    return 1;
 };
 
 module.exports.init = InitializeDatabase;
